@@ -12,14 +12,14 @@
 </head>
 <body>
    <div id="app">
-    <!-- <input placeholder="username" v-model="username"> -->
-    <button @click="incrCount">click!</button>
-    <span> {{count}} </span>
-    <div v-if="isEven">Even</div>
-    <div v-else>ODD</div>
-    <div v-show="isEven">Number is Even</div>
-    <div v-show="!isEven">Number is Odd</div>
-    <!-- <p>Hello {{username}}</p> -->
+    
+    <input v-model="newtask">
+    <button @click="addTask">ADD</button>
+
+    <ul>
+        
+        <li v-for="task in tasks">{{ task }}</li>   
+    </ul>
 
    </div> 
  
@@ -27,16 +27,18 @@
     let app = new Vue({
         el : '#app',
         data: {
-            count: 0,
-            isEven: true
+            tasks: [
+                'first task',
+                'second task',
+                'third task'
+            ]
         },
         methods: {
-            incrCount() {
-                this.count++
-                this.isEven = this.count % 2 === 0 ? true : false 
-
+            addTask() {
+                this.tasks.push(this.newtask)
             }
         }
+      
     })
 </script>
 </body>
