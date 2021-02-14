@@ -14,11 +14,13 @@
    <div id="app">
     
     <input v-model="newtask">
+    <input v-model="priority">
+
     <button @click="addTask">ADD</button>
 
     <ul>
         
-        <li v-for="task in tasks">{{ task }}</li>   
+        <li v-for="task in tasks">{{ task.name }}</li>   
     </ul>
 
    </div> 
@@ -28,14 +30,23 @@
         el : '#app',
         data: {
             tasks: [
-                'first task',
-                'second task',
-                'third task'
-            ]
+               {
+                   name: 'first task',
+                   priority: 1
+                },
+                {
+                    name: 'second task',
+                    priority: 1
+                },
+                {
+                    name : 'third task',
+                    priority: 1
+                }
+           ]
         },
         methods: {
             addTask() {
-                this.tasks.push(this.newtask)
+                this.tasks.push({name: this.newtask, priority: parseInt(this.priority)})
             }
         }
       
